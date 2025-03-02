@@ -21,12 +21,12 @@ public class CriarAutorController {
     private AutorRepository repository;
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Object> execute(@Valid @RequestBody CriarAutorRequest request) {
+    public ResponseEntity<Void> execute(@Valid @RequestBody CriarAutorRequest request) {
         Optional<Autor> autor = repository.findByEmail(request.getEmail());
         autor.ifPresent(u -> {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário já cadastrado");
         });
         this.repository.save(request.toModel());
-        return ResponseEntity.ok("Ok");
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 }
