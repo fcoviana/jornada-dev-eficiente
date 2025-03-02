@@ -19,7 +19,7 @@ public class CriarAutorRequest {
 
     @Schema(description = "Descriçāo do autor", example = "Foi escritor; poeta, dramaturgo, linguista, tradutor e crítico. Formou-se em literatura inglesa pela Universidade de Manchester e morreu em 1993, aos 76 anos, deixando em seu legado uma grande e reconhecida obra, entre romances, biografias, peças de teatro, estudos literários, roteiros de cinema e TV.")
     @NotEmpty(message = "A descriçāo é obrigatória")
-    @Size(min = 1, max = 400, message = "O nome deve ter entre 1 e 400 caracteres")
+    @Size(min = 1, max = 400, message = "A descriçāo deve ter entre 1 e 400 caracteres")
     private String descricao;
 
     public String getNome() {
