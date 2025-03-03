@@ -1,8 +1,5 @@
 package br.com.fcoviana.apilojalivrosvirtual;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -12,3 +9,4 @@ public class ApiLojaLivrosVirtualApplication {
         SpringApplication.run(ApiLojaLivrosVirtualApplication.class, args);
     }
 }
+
