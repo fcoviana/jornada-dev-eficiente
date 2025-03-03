@@ -1,16 +1,25 @@
-# app_loja_livros_virtual
+# Loja livros virtual APP
 
-A new Flutter project.
+## Running the App
 
-## Getting Started
+To run the app:
+```sh
+flutter run
+```
 
-This project is a starting point for a Flutter application.
+## Running Tests
 
-A few resources to get you started if this is your first Flutter project:
+To run the tests:
+```sh
+flutter test
+```
 
+## Resources
+
+- [Flutter Documentation](https://docs.flutter.dev/)
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
