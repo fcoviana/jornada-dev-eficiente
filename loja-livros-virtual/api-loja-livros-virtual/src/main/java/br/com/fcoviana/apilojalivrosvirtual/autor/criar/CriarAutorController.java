@@ -12,7 +12,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
 
-@Tag(name = "Autor", description = "rotas de autor")
+@Tag(name = "Autor", description = "rotas de autores")
 @RestController
 @RequestMapping("/api/v1/autores")
 public class CriarAutorController {
