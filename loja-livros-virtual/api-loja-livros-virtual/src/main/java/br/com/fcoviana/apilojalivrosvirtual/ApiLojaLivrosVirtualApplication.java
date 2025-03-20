@@ -9,4 +9,3 @@ public class ApiLojaLivrosVirtualApplication {
         SpringApplication.run(ApiLojaLivrosVirtualApplication.class, args);
     }
 }
-

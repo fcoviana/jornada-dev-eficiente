@@ -1,6 +1,7 @@
 package br.com.fcoviana.apilojalivrosvirtual.autor.criar;
 
 import br.com.fcoviana.apilojalivrosvirtual.core.model.Autor;
+import br.com.fcoviana.apilojalivrosvirtual.core.validation.UniqueValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
@@ -13,6 +14,7 @@ public class CriarAutorRequest {
     private String nome;
 
     @Schema(description = "E-mail do usuario", example = "paulo.ricardo@mail.com")
+    @UniqueValue(domainClass = Autor.class, fieldName = "email")
     @NotEmpty(message = "O e-mail é obrigatório")
     @Email(message = "E-mail inválido")
     private String email;

@@ -19,10 +19,10 @@ public class CriarCategoriaController {
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Void> execute(@Valid @RequestBody CriarCategoriaRequest request) {
-        var categoria = repository.findByNome(request.getNome());
-        categoria.ifPresent(u -> {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Categoria já cadastrada");
-        });
+//        var categoria = repository.findByNome(request.getNome());
+//        categoria.ifPresent(u -> {
+//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Categoria já cadastrada");
+//        });
         this.repository.save(request.toModel());
         return ResponseEntity.status(HttpStatus.OK).build();
     }
