@@ -10,19 +10,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 
-import java.text.DateFormat;
 import java.time.LocalDate;
+import java.util.Calendar;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -60,6 +55,9 @@ class CriarLivroControllerTests {
         var autor = new Autor("Chico", "chico@mail.com", "Descricao");
         autorRepository.save(autor);
 
+        Calendar calendar = Calendar.getInstance();
+        int ano = calendar.get(Calendar.YEAR) + 1;
+
         var request = new CriarLivroRequest();
         request.setTitulo("Pai Rico, Pai Pobre");
         request.setResumo("Pai Rico, Pai Pobre é um livro de finanças pessoais que se tornou um best-seller mundial. O autor, Robert Kiyosaki, conta a história de dois pais");
@@ -67,7 +65,7 @@ class CriarLivroControllerTests {
         request.setPreco(89.90);
         request.setQuantidadePaginas(300);
         request.setIsbn("978-0132350884");
-        request.setDataLancamento(LocalDate.of(2028, 1, 8));
+        request.setDataLancamento(LocalDate.of(ano, 1, 8));
         request.setCategoriaId(categoria.getId());
         request.setAutorId(autor.getId());
         
