@@ -63,7 +63,7 @@ class ListarLivrosControllerTests {
         livro.setPreco(89.90);
         livro.setQuantidadePaginas(300);
         livro.setIsbn("978-0132350884");
-        livro.setDataLancamento(LocalDate.of(ano, 1, 8));
+        livro.setDataPublicacao(LocalDate.of(ano, 1, 8));
         livro.setAutor(autor);
         livro.setCategoria(categoria);
         livroRepository.save(livro);

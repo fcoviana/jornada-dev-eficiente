@@ -29,8 +29,8 @@ public class Livro {
     @Column(name = "isbn", unique = true)
     private String isbn;
 
-    @Column(name = "data_lancamento")
-    private LocalDate dataLancamento;
+    @Column(name = "data_publicacao")
+    private LocalDate dataPublicacao;
 
     @ManyToOne
     @JoinColumn(name="autor_id")
@@ -43,14 +43,14 @@ public class Livro {
     public Livro() {
     }
 
-    public Livro(String titulo, String resumo, String sumario, double preco, int quantidadePaginas, String isbn, LocalDate dataLancamento, Autor autor, Categoria categoria) {
+    public Livro(String titulo, String resumo, String sumario, double preco, int quantidadePaginas, String isbn, LocalDate dataPublicacao, Autor autor, Categoria categoria) {
         this.titulo = titulo;
         this.resumo = resumo;
         this.sumario = sumario;
         this.preco = preco;
         this.quantidadePaginas = quantidadePaginas;
         this.isbn = isbn;
-        this.dataLancamento = dataLancamento;
+        this.dataPublicacao = dataPublicacao;
         this.autor = autor;
         this.categoria = categoria;
     }
@@ -111,12 +111,12 @@ public class Livro {
         this.isbn = isbn;
     }
 
-    public LocalDate getDataLancamento() {
-        return dataLancamento;
+    public LocalDate getDataPublicacao() {
+        return dataPublicacao;
     }
 
-    public void setDataLancamento(LocalDate dataLancamento) {
-        this.dataLancamento = dataLancamento;
+    public void setDataPublicacao(LocalDate dataPublicacao) {
+        this.dataPublicacao = dataPublicacao;
     }
 
     public Autor getAutor() {

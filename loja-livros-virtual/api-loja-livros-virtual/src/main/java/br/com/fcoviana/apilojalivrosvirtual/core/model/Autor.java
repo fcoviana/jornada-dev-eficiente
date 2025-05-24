@@ -3,8 +3,6 @@ package br.com.fcoviana.apilojalivrosvirtual.core.model;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "autores")
@@ -26,9 +24,6 @@ public class Autor {
     @CreationTimestamp
     @Column(updatable = false, name = "criado_em")
     private LocalDateTime criadoEm;
-
-    @OneToMany(mappedBy = "autor")
-    private List<Livro> livros = new ArrayList<>();
 
     public Autor() {
     }
@@ -77,13 +72,5 @@ public class Autor {
 
     public void setCriadoEm(LocalDateTime criadoEm) {
         this.criadoEm = criadoEm;
-    }
-
-    public List<Livro> getLivros() {
-        return livros;
-    }
-
-    public void setLivros(List<Livro> livros) {
-        this.livros = livros;
     }
 }

@@ -65,7 +65,7 @@ class CriarLivroControllerTests {
         request.setPreco(89.90);
         request.setQuantidadePaginas(300);
         request.setIsbn("978-0132350884");
-        request.setDataLancamento(LocalDate.of(ano, 1, 8));
+        request.setDataPublicacao(LocalDate.of(ano, 1, 8));
         request.setCategoriaId(categoria.getId());
         request.setAutorId(autor.getId());
         
