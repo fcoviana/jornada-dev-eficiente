@@ -22,7 +22,7 @@ public class DetalhesLivroController {
 
     @GetMapping("detalhes/{id}")
     @ResponseBody
-    public ResponseEntity<DetalhesLivroResponse> execute(@RequestParam @Schema(description = "Id do livro", example = "1") Long id) {
+    public ResponseEntity<DetalhesLivroResponse> execute(@PathVariable @Schema(description = "Id do livro", example = "1") Long id) {
         var livro = this.repository.findById(id);
         if (livro.isEmpty()) {
             return ResponseEntity.notFound().build();
