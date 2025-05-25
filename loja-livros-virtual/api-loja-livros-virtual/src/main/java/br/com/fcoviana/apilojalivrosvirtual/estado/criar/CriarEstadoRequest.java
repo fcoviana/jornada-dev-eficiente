@@ -16,7 +16,7 @@ public class CriarEstadoRequest {
     private String nome;
 
     @Schema(description = "Id do Pais", example = "1")
-    @ExistsId(domainClass = Pais.class, fieldName = "id")
+    @ExistsId(domainClass = Pais.class, fieldName = "id", message = "O pais não existe")
     @NotNull(message = "A paisId é obrigatório")
     private Long paisId;
 

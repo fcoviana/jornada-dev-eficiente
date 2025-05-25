@@ -2,6 +2,8 @@ package br.com.fcoviana.apilojalivrosvirtual.core.model;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "estados")
 public class Estado {
@@ -48,4 +50,9 @@ public class Estado {
     public void setPais(Pais pais) {
         this.pais = pais;
     }
+
+    public boolean estadoPertencePais(Pais pais) {
+        return this.pais.equals(pais);
+    }
+
 }
