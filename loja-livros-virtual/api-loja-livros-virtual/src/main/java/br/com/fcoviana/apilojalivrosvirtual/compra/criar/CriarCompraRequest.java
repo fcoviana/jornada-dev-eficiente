@@ -1,10 +1,11 @@
 package br.com.fcoviana.apilojalivrosvirtual.compra.criar;
 
-import br.com.fcoviana.apilojalivrosvirtual.core.model.Estado;
-import br.com.fcoviana.apilojalivrosvirtual.core.model.Pais;
+import br.com.fcoviana.apilojalivrosvirtual.core.model.*;
 import br.com.fcoviana.apilojalivrosvirtual.core.validation.CpfCnpj;
 import br.com.fcoviana.apilojalivrosvirtual.core.validation.ExistsId;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.EntityManager;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -56,6 +57,10 @@ public class CriarCompraRequest {
     @Schema(description = "Cep do cliente", example = "60534-260")
     @NotEmpty(message = "O cep é obrigatório")
     private String cep;
+
+    @NotNull(message = "O pedido é obrigatório")
+    @Valid
+    private CriarPedidoRequest pedido;
 
     public String getNome() {
         return nome;
@@ -145,8 +150,29 @@ public class CriarCompraRequest {
         this.cep = cep;
     }
 
-    //    public Estado toModel(EntityManager entityManager) {
-//        var pais = entityManager.find(Pais.class, paisId);
-//        return new Estado(nome, pais);
-//    }
+    public CriarPedidoRequest getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(CriarPedidoRequest pedido) {
+        this.pedido = pedido;
+    }
+
+    public Compra toModel(EntityManager entityManager) {
+        var pais = entityManager.find(Pais.class, paisId);
+        var itensPedidoToSave = pedido.getItens().stream().map(item -> {
+            var livro = entityManager.find(Livro.class, item.getLivroId());
+            return  new ItemPedido(livro, item.getQuantidade());
+        }).toList();
+        var pedidoToSave = new Pedido(pedido.getTotal(), itensPedidoToSave);
+        var compraToSave = new Compra(email, nome, sobrenome, documento, endereco, complemento, cidade, pais, telefone, cep, pedidoToSave);
+
+        if (estadoId != null) {
+            var estado = entityManager.find(Estado.class, estadoId);
+            compraToSave.setEstado(estado);
+        }
+
+        return compraToSave;
+    }
 }
+

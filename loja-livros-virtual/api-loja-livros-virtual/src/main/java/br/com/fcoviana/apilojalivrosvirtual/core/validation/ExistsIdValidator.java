@@ -21,9 +21,9 @@ public class ExistsIdValidator implements ConstraintValidator<ExistsId, Object> 
 
     @Override
     public boolean isValid(Object value, ConstraintValidatorContext context) {
-        if (value == null) return true; // deixe @NotNull cuidar disso
+        if (value == null) return true;
 
-        String jpql = "select count(e) from " + domainClass.getName() + " e where e." + fieldName + " = :value";
+        String jpql = "SELECT COUNT(e) FROM " + domainClass.getName() + " e WHERE e." + fieldName + " = :value";
         Long count = entityManager.createQuery(jpql, Long.class)
                 .setParameter("value", value)
                 .getSingleResult();

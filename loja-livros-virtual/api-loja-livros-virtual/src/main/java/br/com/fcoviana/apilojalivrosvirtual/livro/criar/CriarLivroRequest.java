@@ -123,12 +123,12 @@ public class CriarLivroRequest {
     private LocalDate dataPublicacao;
 
     @Schema(description = "Id do Autor", example = "1")
-    @ExistsId(domainClass = Autor.class, fieldName = "id")
+    @ExistsId(domainClass = Autor.class, fieldName = "id", message = "O autor informado nāo existe.")
     @NotNull(message = "A autorId é obrigatório")
     private Long autorId;
 
     @Schema(description = "Id da Categoria", example = "1")
-    @ExistsId(domainClass = Categoria.class, fieldName = "id")
+    @ExistsId(domainClass = Categoria.class, fieldName = "id", message = "A categoria informada nāo existe.")
     @NotNull(message = "A categoriaId é obrigatória")
     private Long categoriaId;
 

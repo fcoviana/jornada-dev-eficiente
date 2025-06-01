@@ -7,7 +7,7 @@ import java.lang.annotation.*;
 
 @Documented
 @Constraint(validatedBy = CpfCnpjValidator.class)
-@Target({ ElementType.FIELD })
+@Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface CpfCnpj {
     String message() default "Documento inválido. Deve ser um CPF ou CNPJ válido.";
